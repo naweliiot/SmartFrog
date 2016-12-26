@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="smartFrog">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <title>SmartFrog Cart</title>
+ 
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="//code.angularjs.org/1.4.3/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.4.3/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="/app.js"></script>
+    <script type="text/javascript" src="/js/ngCart.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/cart.css">
+ 
+</head>
+
+<body ng-controller="cartCtrl">
+<h2 style="text-align:center;">Welcome to smart Frog shopping Cart</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+                <div class="thumbnail">
+                    <img ng-src="/img/item1.jpg">
+                
+                    <h3 class="price ng-binding" style="text-align: center"><small>nur</small> <b>4.95€</b></span><small> im monat</small></h3>
+                    <ngcart-addtocart id="item1" name="SmartFrog Komplettlösung" price="4.95€" quantity="1" quantity-max="30" class="ng-isolate-scope">
+                        <div ng-hide="attrs.id" class="ng-hide">
+                            <a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude="" disabled="disabled"><span class="ng-scope">
+                            Add To Cart
+                            </span></a>
+                        </div>
+                        <div ng-show="attrs.id" class="">
+                            <div>
+                                <span ng-show="quantityMax" class="">
+                        
+                                <select name="quantity" id="item1" ng-model="q" ng-options=" v for v in qtyOpt" class="ng-pristine ng-valid"><option value="0" selected="selected" label="1">1</option><option value="1" label="2">2</option><option value="2" label="3">3</option><option value="3" label="4">4</option><option value="4" label="5">5</option><option value="5" label="6">6</option><option value="6" label="7">7</option><option value="7" label="8">8</option><option value="8" label="9">9</option><option value="9" label="10">10</option><option value="10" label="11">11</option><option value="11" label="12">12</option><option value="12" label="13">13</option><option value="13" label="14">14</option><option value="14" label="15">15</option><option value="15" label="16">16</option><option value="16" label="17">17</option><option value="17" label="18">18</option><option value="18" label="19">19</option><option value="19" label="20">20</option><option value="20" label="21">21</option><option value="21" label="22">22</option><option value="22" label="23">23</option><option value="23" label="24">24</option><option value="24" label="25">25</option><option value="25" label="26">26</option><option value="26" label="27">27</option><option value="27" label="28">28</option><option value="28" label="29">29</option><option value="29" label="30">30</option></select>
+                                
+                                </span>
+                                <a class="btn btn-sm btn-primary" ng-click="ngCart.addItem(id, name, price, q, data)" ng-transclude=""><span class="ng-scope">Add To Cart</span></a>
+                            </div>
+                            
+                            <mark ng-show="inCart()" class="">
+                            This item is in your cart. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove</a></mark>
+                        </div>
+                    </ngcart-addtocart>
+                </div>
+            </div>
+            <div>   <!-- second item in cart -->
+                <div class="col-sm-3"> 
+                    <div class="thumbnail">
+                        <img ng-src="/img/item2.jpg">
+                        
+                        <h3 class="price ng-binding" style="text-align: center"><small>nur </small><b>99€</b><small> einmalig</small></h3>
+                        <ngcart-addtocart id="item2" name="Kamera-Paket" price="99€" quantity="1" quantity-max="30" class="ng-isolate-scope">
+                        <div ng-hide="attrs.id" class="ng-hide">
+                            <a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude="" disabled="disabled"><span class="ng-scope">
+                                Add To Cart
+                            </span></a>
+
+                        </div>
+                        <div ng-show="attrs.id" class="">
+                            <div>
+                                <span ng-show="quantityMax" class="">
+                                <select name="quantity" id="quantity" ng-model="q" ng-options=" v for v in qtyOpt" class="ng-pristine ng-valid"><option value="0" selected="selected" label="1">1</option><option value="1" label="2">2</option><option value="2" label="3">3</option><option value="3" label="4">4</option><option value="4" label="5">5</option><option value="5" label="6">6</option><option value="6" label="7">7</option><option value="7" label="8">8</option><option value="8" label="9">9</option><option value="9" label="10">10</option><option value="10" label="11">11</option><option value="11" label="12">12</option><option value="12" label="13">13</option><option value="13" label="14">14</option><option value="14" label="15">15</option><option value="15" label="16">16</option><option value="16" label="17">17</option><option value="17" label="18">18</option><option value="18" label="19">19</option><option value="19" label="20">20</option><option value="20" label="21">21</option><option value="21" label="22">22</option><option value="22" label="23">23</option><option value="23" label="24">24</option><option value="24" label="25">25</option><option value="25" label="26">26</option><option value="26" label="27">27</option><option value="27" label="28">28</option><option value="28" label="29">29</option><option value="29" label="30">30</option></select>
+                                </span>
+                                <a class="btn btn-sm btn-primary" ng-click="ngCart.addItem(id, name, price, q, data)" ng-transclude="">
+                                <span class="ng-scope">Add To Cart</span></a>
+                            </div>
+    
+                            <mark ng-show="inCart()" class="">
+                            This item is in your cart. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove</a>
+                            </mark>
+
+                        </div>
+
+                        </ngcart-addtocart></div>
+                </div>
+            </div>
+
+            <ngcart-cart></ngcart-cart>
+        
+    </div>
+</div>
+
+<script type="text/ng-template" id="/template/summary.html">
+<div class="row">
+    <div class="col-md-6">{{ ngCart.getTotalItems() }}
+        <ng-pluralize count="ngCart.getTotalItems()" when="{1: 'item', 'other':'items'}"></ng-pluralize>
+        <br />{{ ngCart.totalCost() | currency }}
+    </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="/template/cart.html">
+
+<div class="table-responsive col-lg-12" ng-show="ngCart.getTotalItems() > 0">
+</div>
+
+</script>
+
+<script type="text/ng-template" id="/template/addtocart.html">
+<div ng-hide="attrs.id">
+    <a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude></a>
+</div>
+<div ng-show="attrs.id">
+    <div>
+        <span ng-show="quantityMax">
+            <select name="quantity" id="quantity" ng-model="q"
+                    ng-options=" v for v in qtyOpt"></select>
+        </span>
+        <a class="btn btn-sm btn-primary"
+           ng-click="ngCart.addItem(id, name, price, q, data)"
+           ng-transclude></a>
+    </div>
+    <mark  ng-show="inCart()">
+        This item is in your cart. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove</a>
+    </mark>
+</div>
+</script>
+
+<script type="text/ng-template" id="/template/checkout.html">
+    
+<div ng-if="service=='http' || service == 'log'">
+    <button class="btn btn-primary" ng-click="checkout()" ng-disabled="!ngCart.getTotalItems()" ng-transclude>Checkout</button>
+</div>
+    
+</script>
+
+<div ng-view></div>
+
+</body>
+</html>
